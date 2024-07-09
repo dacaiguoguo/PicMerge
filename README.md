@@ -19,12 +19,17 @@ PicMerge is a Swift command-line tool designed to create a single, seamless imag
 
 1. Clone the repository to your local machine:
    ```bash
-   git clone https://github.com/yourusername/PicMerge.git
+   git clone https://github.com/dacaiguoguo/PicMerge.git
    ```
 2. Navigate to the project directory:
    ```bash
    cd PicMerge
    ```
+   
+3. build
+```
+swiftc main.swift -framework CoreGraphics -framework ImageIO -framework UniformTypeIdentifiers -o picmerge
+```
 
 ## Usage
 
@@ -33,7 +38,7 @@ To use PicMerge, you need to provide the source folder where your images are sto
 ### Basic Command
 
 ```bash
-swift main.swift
+picmerge sourceFolder outputImagePath imagesPerRow maxWidth
 ```
 
 ### Command Parameters
@@ -46,7 +51,7 @@ swift main.swift
 ### Example
 
 ```bash
-swift main.swift /path/to/images /path/to/output/image.jpg 5 500
+Usage: PicMerge sourceFolder outputImagePath imagesPerRow maxWidth
 ```
 
 This command will process images located in `/path/to/images`, arrange them in rows of 5 images each, scale each image to a width of 500 pixels, and save the resulting grid image to `/path/to/output/image.jpg`.

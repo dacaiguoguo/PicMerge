@@ -90,8 +90,18 @@ func createImageGrid(sourceFolder: String, outputImagePath: String, imagesPerRow
     }
 }
 
-// Usage
-let sourceFolder = "/Users/yanguosun/Developer/一年级" // Change to your directory path
-let outputImagePath = "/Users/yanguosun/Developer/output900.jpg" // Change to your output file path
+// Handling command-line arguments
+if CommandLine.argc < 5 {
+    print("Usage: picmerge sourceFolder outputImagePath imagesPerRow maxWidth")
+    exit(1)
+}
 
-createImageGrid(sourceFolder: sourceFolder, outputImagePath: outputImagePath, imagesPerRow: 5, maxWidth: 500)
+let sourceFolder = CommandLine.arguments[1]
+let outputImagePath = CommandLine.arguments[2]
+guard let imagesPerRow = Int(CommandLine.arguments[3]),
+      let maxWidth = Int(CommandLine.arguments[4]) else {
+    print("Invalid number format for imagesPerRow or maxWidth")
+    exit(1)
+}
+
+createImageGrid(sourceFolder: sourceFolder, outputImagePath: outputImagePath, imagesPerRow: imagesPerRow, maxWidth: maxWidth)
